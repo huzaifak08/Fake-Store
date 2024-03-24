@@ -1,5 +1,4 @@
 import 'package:fakes_store/exports/libraries.dart';
-import 'package:fakes_store/exports/responsive.dart';
 
 class RegisterButton extends StatelessWidget {
   final bool isSelected;
