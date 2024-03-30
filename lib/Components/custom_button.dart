@@ -13,8 +13,8 @@ class CustomButton extends StatelessWidget {
     this.color = AppColors.primaryColor,
     this.textColor = AppColors.whiteColor,
     this.loading = false,
-    required this.height,
-    required this.width,
+    this.height,
+    this.width,
   });
 
   @override
@@ -37,8 +37,8 @@ class CustomButton extends StatelessWidget {
                   title,
                   style: Theme.of(context)
                       .textTheme
-                      .displayMedium!
-                      .copyWith(fontSize: 16, color: textColor),
+                      .titleSmall!
+                      .copyWith(fontSize: 14, color: textColor),
                 ),
         ),
       ),
