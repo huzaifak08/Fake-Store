@@ -1,4 +1,5 @@
 import 'package:fakes_store/exports/libraries.dart';
+import 'package:fakes_store/screens/explore_screen.dart';
 import 'package:fakes_store/screens/home_screen.dart';
 
 class NavigationMenu extends StatefulWidget {
@@ -13,7 +14,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
 
   List<Widget> screens = [
     const HomeScreen(),
-    Container(),
+    const ExploreScreen(),
     Container(),
     Container(),
   ];
@@ -42,7 +43,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
                   backgroundColor: AppColors.primaryColor),
               BottomNavigationBarItem(
                   icon: Icon(Iconsax.shop),
-                  label: 'Store',
+                  label: 'Explore',
                   backgroundColor: AppColors.primaryColor),
               BottomNavigationBarItem(
                   icon: Icon(Iconsax.heart),
