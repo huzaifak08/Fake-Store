@@ -51,7 +51,7 @@ jobs:
         with:
           artifacts: "build/app/outputs/flutter-apk/app-release.apk"
           tag: v0.0.1
-          token: ${{ secrets.TOKEN}}
+          token: ${{secrets.TOKEN}}
 
       # - name: Upload APK
       #   uses: actions/upload-artifact@v2

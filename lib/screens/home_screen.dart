@@ -31,7 +31,15 @@ class HomeScreen extends StatelessWidget {
                   ),
                   itemCount: 4,
                   itemBuilder: (context, index) {
-                    return const ProductTile(
+                    return ProductTile(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const ProductDetailScreen(),
+                              ));
+                        },
                         title: "Product Title",
                         price: 99.99,
                         url:
