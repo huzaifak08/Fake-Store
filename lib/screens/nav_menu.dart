@@ -1,7 +1,5 @@
 import 'package:fakes_store/exports/libraries.dart';
 import 'package:fakes_store/screens/home_screen.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:iconsax/iconsax.dart';
 
 class NavigationMenu extends StatefulWidget {
   const NavigationMenu({super.key});
