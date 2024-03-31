@@ -1,5 +1,4 @@
 import 'package:fakes_store/exports/libraries.dart';
-import 'package:fakes_store/widgets/wishlist_tile.dart';
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});

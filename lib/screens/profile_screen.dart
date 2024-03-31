@@ -1,4 +1,3 @@
-import 'package:fakes_store/Components/custom_profile_tile.dart';
 import 'package:fakes_store/exports/libraries.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -18,7 +17,13 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(height: getHeight(context) * 0.03),
               CircleAvatar(
                 radius: getHeight(context) * 0.08,
-                backgroundImage: const AssetImage("assets/profile.png"),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(getHeight(context) * 0.1),
+                  child: Image.asset(
+                    "assets/profile.png",
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               SizedBox(height: getHeight(context) * 0.03),
               const ProfileTile(title: 'First Name', value: "Huzaifa"),

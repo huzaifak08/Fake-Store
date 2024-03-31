@@ -1,13 +1,13 @@
 # FAKE STORE APP
 
-This is new Flutter Project which is an ecommerce app. It is an Open source project so everyone can access the code from GitHub.
+This is new Flutter Project which is an e-commerce app. It is an Open source project so everyone can access the code from GitHub.
 All the information about methodologies, techniques and technologies used in this project is given below.
 
 ## Methodologies and Steps:
 
-## MVVM Architecture:
+### Architecture:
 
---> Model View View-Model.
+--> Model View View-Model (MVVM)
 
 ### CI/CD:
 
@@ -18,10 +18,22 @@ All the information about methodologies, techniques and technologies used in thi
 --> URL:  
 https://dribbble.com/shots/18744092-MNML-E-Commerce-App
 
+--- Profile Screen:  
+https://dribbble.com/shots/23741287-Dashboard-and-profile-screen-UI
+
+### BACKEND:
+
+--> Fake Store API:
+https://fakestoreapi.com/docs
+
 ### MOBX:
 
---> Auth Bloc.  
---> User Bloc.
+--> Auth.  
+--> User.
+
+### PACKAGES:
+
+--> iconsax
 
 ### More:
 

@@ -21,9 +21,27 @@ class WelcomeScreen extends StatelessWidget {
                     EdgeInsets.symmetric(vertical: getHeight(context) * 0.04),
                 child: Text(
                   "MNMLMANDI",
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        color: AppColors.primaryColor,
-                      ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(color: AppColors.primaryColor, shadows: const [
+                    Shadow(
+                        // bottomLeft
+                        offset: Offset(-1.5, -1.5),
+                        color: Colors.white),
+                    Shadow(
+                        // bottomRight
+                        offset: Offset(1.5, -1.5),
+                        color: Colors.white),
+                    Shadow(
+                        // topRight
+                        offset: Offset(1.5, 1.5),
+                        color: Colors.white),
+                    Shadow(
+                        // topLeft
+                        offset: Offset(-1.5, 1.5),
+                        color: Colors.white),
+                  ]),
                 ),
               ),
               Container(
@@ -61,9 +79,9 @@ class WelcomeScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     SizedBox(height: getHeight(context) * 0.02),
-                    Text(
+                    const Text(
                       "Change The Quality Of Your\nAppearance With MNMLMANDI Now!",
-                      style: Theme.of(context).textTheme.titleSmall,
+                      style: TextStyle(color: AppColors.ternaryColor),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: getHeight(context) * 0.04),

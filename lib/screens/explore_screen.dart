@@ -1,6 +1,4 @@
 import 'package:fakes_store/exports/libraries.dart';
-import 'package:fakes_store/screens/category_products_screen.dart';
-import 'package:fakes_store/widgets/category_tile.dart';
 
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});
