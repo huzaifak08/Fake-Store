@@ -1,4 +1,5 @@
 import 'package:fakes_store/exports/libraries.dart';
+import 'package:fakes_store/screens/category_products_screen.dart';
 import 'package:fakes_store/widgets/category_tile.dart';
 
 class ExploreScreen extends StatelessWidget {
@@ -27,32 +28,64 @@ class ExploreScreen extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
-                    const CategoryTile(
-                      imageUrl:
-                          "https://images.pexels.com/photos/325876/pexels-photo-325876.jpeg?auto=compress&cs=tinysrgb&w=600",
+                    CategoryTile(
+                      imageUrl: "assets/mens.jpg",
                       title: "MEN'S CLOTHING",
                       products: 120,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CategoryProductScreen(
+                                headerTitle: "men's clothing",
+                              ),
+                            ));
+                      },
                     ),
                     SizedBox(height: getHeight(context) * 0.01),
-                    const CategoryTile(
-                      imageUrl:
-                          "https://images.pexels.com/photos/6069977/pexels-photo-6069977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    CategoryTile(
+                      imageUrl: "assets/womwns.jpg",
                       title: "WOMEN'S CLOTHING",
                       products: 120,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CategoryProductScreen(
+                                headerTitle: "women's Clothing",
+                              ),
+                            ));
+                      },
                     ),
                     SizedBox(height: getHeight(context) * 0.01),
-                    const CategoryTile(
-                      imageUrl:
-                          "https://images.pexels.com/photos/17834/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    CategoryTile(
+                      imageUrl: "assets/jewlery.jpg",
                       title: 'JEWELERY',
                       products: 120,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CategoryProductScreen(
+                                headerTitle: "jewelery",
+                              ),
+                            ));
+                      },
                     ),
                     SizedBox(height: getHeight(context) * 0.01),
-                    const CategoryTile(
-                      imageUrl:
-                          "https://images.pexels.com/photos/2111015/pexels-photo-2111015.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                    CategoryTile(
+                      imageUrl: "assets/electronics.jpg",
                       title: 'ELECTRONICS',
                       products: 120,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CategoryProductScreen(
+                                headerTitle: "electronics",
+                              ),
+                            ));
+                      },
                     ),
                   ],
                 ),
