@@ -1,6 +1,7 @@
 import 'package:fakes_store/exports/libraries.dart';
 import 'package:fakes_store/screens/explore_screen.dart';
 import 'package:fakes_store/screens/home_screen.dart';
+import 'package:fakes_store/screens/profile_screen.dart';
 import 'package:fakes_store/screens/wishlist_screen.dart';
 
 class NavigationMenu extends StatefulWidget {
@@ -17,7 +18,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
     const HomeScreen(),
     const ExploreScreen(),
     const WishlistScreen(),
-    Container(),
+    const ProfileScreen(),
   ];
 
   @override
