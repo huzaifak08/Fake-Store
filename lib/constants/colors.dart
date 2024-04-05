@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color primaryColor = Color(0xff292526);
   static const Color secondaryColor = Color.fromRGBO(255, 255, 255, 1);
-  static const Color ternaryColor = Color(0xff8F92A1);
+  static const Color ternaryColor = Color.fromARGB(255, 157, 159, 172);
 
   static const Color primaryTextColor = Color(0xff242424);
   static const Color secondaryTextColor = Color(0xff8F92A1);

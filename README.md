@@ -1,16 +1,64 @@
-# fakes_store
+# FAKE STORE APP
 
-A new Flutter project.
+This is new Flutter Project which is an e-commerce app. It is an Open source project so everyone can access the code from GitHub.
+All the information about methodologies, techniques and technologies used in this project is given below.
 
-## Getting Started
+## Methodologies and Steps:
 
-This project is a starting point for a Flutter application.
+### Architecture:
 
-A few resources to get you started if this is your first Flutter project:
+--> Model View View-Model (MVVM)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### CI/CD:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+--> CI/CD using Github Actions
+
+### DRIBBBLE UI:
+
+--> URL:  
+https://dribbble.com/shots/18744092-MNML-E-Commerce-App
+
+--- Profile Screen:  
+https://dribbble.com/shots/23741287-Dashboard-and-profile-screen-UI
+
+### BACKEND:
+
+--> Fake Store API:
+https://fakestoreapi.com/docs
+
+### MOBX:
+
+--> Auth.  
+--> User.
+
+### MODELS:
+
+--> UserModel  
+--> Name Model  
+--> Address Model  
+--> GeoLocation Model
+
+--> Product Model  
+--> Rating Model
+
+--> Cart Model  
+--> Cart Product Model
+
+### PACKAGES:
+
+--> iconsax  
+--> connectivity_plus  
+-->dio  
+-->flutter_mobx  
+-->get_it  
+-->mobx  
+-->mobx_codegen  
+-->build_runner
+
+### More:
+
+--> App Icon and Name Changed.  
+--> Focus Nodes.  
+--> iconsax pacakge.  
+--> Custom Bottom Navigation Bar.  
+--> Profile Screen.
