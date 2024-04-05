@@ -31,9 +31,29 @@ https://fakestoreapi.com/docs
 --> Auth.  
 --> User.
 
+### MODELS:
+
+--> UserModel  
+--> Name Model  
+--> Address Model  
+--> GeoLocation Model
+
+--> Product Model  
+--> Rating Model
+
+--> Cart Model  
+--> Cart Product Model
+
 ### PACKAGES:
 
---> iconsax
+--> iconsax  
+--> connectivity_plus  
+-->dio  
+-->flutter_mobx  
+-->get_it  
+-->mobx  
+-->mobx_codegen  
+-->build_runner
 
 ### More:
 
