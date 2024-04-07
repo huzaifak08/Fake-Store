@@ -87,12 +87,13 @@ class WelcomeScreen extends StatelessWidget {
                     SizedBox(height: getHeight(context) * 0.04),
                     CustomButton(
                       title: "Get Started",
-                      onPressed: () => Navigator.push(
+                      onPressed: () async => Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const LoginScreen(),
                         ),
                       ),
+                      // await AuthServce().signInUser("mor_2314", "83r5^_"),
                       height: getHeight(context) * 0.07,
                       width: getWidth(context) * 0.8,
                     ),

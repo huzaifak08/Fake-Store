@@ -1,7 +1,8 @@
 import 'package:fakes_store/screens/welcome_screen.dart';
 import 'exports/libraries.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
