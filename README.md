@@ -50,7 +50,6 @@ https://fakestoreapi.com/docs
 --> connectivity_plus  
 -->dio  
 -->flutter_mobx  
--->get_it  
 -->mobx  
 -->mobx_codegen  
 -->build_runner
@@ -61,4 +60,5 @@ https://fakestoreapi.com/docs
 --> Focus Nodes.  
 --> iconsax pacakge.  
 --> Custom Bottom Navigation Bar.  
---> Profile Screen.
+--> Profile Screen.  
+--> Auth Functionality.
