@@ -1,6 +1,4 @@
 import 'package:fakes_store/exports/libraries.dart';
-import 'package:fakes_store/stores/auth_store.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -116,11 +114,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                     SizedBox(height: getHeight(context) * 0.01),
-                    CustomTextField(
-                      controller: passwordController,
-                      focusNode: passwordFocusNode,
-                      label: 'Password',
-                      keyboardType: TextInputType.emailAddress,
+                    Observer(
+                      builder: (context) => CustomTextField(
+                        controller: passwordController,
+                        focusNode: passwordFocusNode,
+                        label: 'Password',
+                        keyboardType: TextInputType.emailAddress,
+                        suffixIcon: IconButton(
+                          onPressed: () => _authStore.toggleVisibility(),
+                          icon: _authStore.isVisible
+                              ? const Icon(Iconsax.eye)
+                              : const Icon(Iconsax.eye_slash),
+                        ),
+                        obsecureText: _authStore.isVisible,
+                      ),
                     ),
                     SizedBox(height: getHeight(context) * 0.02),
                     Observer(

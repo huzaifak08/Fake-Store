@@ -1,11 +1,18 @@
-import 'package:dio/dio.dart';
-import 'package:fakes_store/constants/end_points.dart';
 import 'package:fakes_store/exports/libraries.dart';
-import 'package:fakes_store/helper/sp_helper.dart';
 
 class AuthServce {
   final Dio _dio = Dio();
   final SharedPreferenceHelper _spHelper = SharedPreferenceHelper();
+
+  Future<bool> checkUserLoggedIn() async {
+    try {
+      bool? status = await _spHelper.getLoggedInStatus;
+
+      return status!;
+    } catch (err) {
+      throw Exception(err.toString());
+    }
+  }
 
   Future<String?> signInUser(String username, String password) async {
     try {
@@ -21,6 +28,7 @@ class AuthServce {
 
         if (token != null) {
           _spHelper.saveAuthToken(token);
+          _spHelper.saveIsLoggedInStatus(true);
         }
 
         return token;
@@ -31,5 +39,13 @@ class AuthServce {
       throw Exception(err.toString());
     }
     return null;
+  }
+
+  Future<void> logOutUser() async {
+    try {
+      _spHelper.saveIsLoggedInStatus(false);
+    } catch (err) {
+      throw Exception(err.toString());
+    }
   }
 }

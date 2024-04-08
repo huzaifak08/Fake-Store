@@ -21,6 +21,18 @@ mixin _$AuthStore on _AuthStore, Store {
   String get token => (_$tokenComputed ??=
           Computed<String>(() => super.token, name: '_AuthStore.token'))
       .value;
+  Computed<bool>? _$isLoggedInComputed;
+
+  @override
+  bool get isLoggedIn => (_$isLoggedInComputed ??=
+          Computed<bool>(() => super.isLoggedIn, name: '_AuthStore.isLoggedIn'))
+      .value;
+  Computed<bool>? _$isVisibleComputed;
+
+  @override
+  bool get isVisible => (_$isVisibleComputed ??=
+          Computed<bool>(() => super.isVisible, name: '_AuthStore.isVisible'))
+      .value;
 
   late final _$_isLoadingAtom =
       Atom(name: '_AuthStore._isLoading', context: context);
@@ -53,6 +65,46 @@ mixin _$AuthStore on _AuthStore, Store {
     });
   }
 
+  late final _$_isLoggedInAtom =
+      Atom(name: '_AuthStore._isLoggedIn', context: context);
+
+  @override
+  bool get _isLoggedIn {
+    _$_isLoggedInAtom.reportRead();
+    return super._isLoggedIn;
+  }
+
+  @override
+  set _isLoggedIn(bool value) {
+    _$_isLoggedInAtom.reportWrite(value, super._isLoggedIn, () {
+      super._isLoggedIn = value;
+    });
+  }
+
+  late final _$_isVisibleAtom =
+      Atom(name: '_AuthStore._isVisible', context: context);
+
+  @override
+  bool get _isVisible {
+    _$_isVisibleAtom.reportRead();
+    return super._isVisible;
+  }
+
+  @override
+  set _isVisible(bool value) {
+    _$_isVisibleAtom.reportWrite(value, super._isVisible, () {
+      super._isVisible = value;
+    });
+  }
+
+  late final _$loggedInStatusAsyncAction =
+      AsyncAction('_AuthStore.loggedInStatus', context: context);
+
+  @override
+  Future<void> loggedInStatus() {
+    return _$loggedInStatusAsyncAction.run(() => super.loggedInStatus());
+  }
+
   late final _$loginAsyncAction =
       AsyncAction('_AuthStore.login', context: context);
 
@@ -61,11 +113,35 @@ mixin _$AuthStore on _AuthStore, Store {
     return _$loginAsyncAction.run(() => super.login(username, password));
   }
 
+  late final _$logoutAsyncAction =
+      AsyncAction('_AuthStore.logout', context: context);
+
+  @override
+  Future<void> logout() {
+    return _$logoutAsyncAction.run(() => super.logout());
+  }
+
+  late final _$_AuthStoreActionController =
+      ActionController(name: '_AuthStore', context: context);
+
+  @override
+  void toggleVisibility() {
+    final _$actionInfo = _$_AuthStoreActionController.startAction(
+        name: '_AuthStore.toggleVisibility');
+    try {
+      return super.toggleVisibility();
+    } finally {
+      _$_AuthStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 isLoading: ${isLoading},
-token: ${token}
+token: ${token},
+isLoggedIn: ${isLoggedIn},
+isVisible: ${isVisible}
     ''';
   }
 }

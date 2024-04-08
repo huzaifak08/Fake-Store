@@ -1,4 +1,4 @@
-import 'package:fakes_store/services/auth_service.dart';
+import 'package:fakes_store/exports/libraries.dart';
 import 'package:mobx/mobx.dart';
 part 'auth_store.g.dart';
 
@@ -18,6 +18,21 @@ abstract class _AuthStore with Store {
   @computed
   String get token => _token!;
 
+  @observable
+  bool _isLoggedIn = false;
+  @computed
+  bool get isLoggedIn => _isLoggedIn;
+
+  @observable
+  bool _isVisible = false;
+  @computed
+  bool get isVisible => _isVisible;
+
+  @action
+  Future<void> loggedInStatus() async {
+    _isLoggedIn = await _authServce.checkUserLoggedIn();
+  }
+
   @action
   Future<void> login(String username, String password) async {
     _isLoading = true;
@@ -27,5 +42,19 @@ abstract class _AuthStore with Store {
     _token = response!;
 
     _isLoading = false;
+  }
+
+  @action
+  Future<void> logout() async {
+    _isLoading = true;
+
+    await _authServce.logOutUser();
+
+    _isLoading = false;
+  }
+
+  @action
+  void toggleVisibility() {
+    _isVisible = !_isVisible;
   }
 }

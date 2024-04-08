@@ -1,7 +1,15 @@
 import 'package:fakes_store/exports/libraries.dart';
+import 'package:fakes_store/screens/welcome_screen.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  final AuthStore _authStore = AuthStore();
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +42,28 @@ class ProfileScreen extends StatelessWidget {
               const ProfileTile(
                   title: 'Phone Number', value: "+92 318 0794547"),
               SizedBox(height: getHeight(context) * 0.01),
-              CustomButton(
-                width: getWidth(context) * 0.7,
-                title: "Logout",
-                onPressed: () {},
+              Observer(
+                builder: (context) => _authStore.isLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primaryColor,
+                        ),
+                      )
+                    : CustomButton(
+                        width: getWidth(context) * 0.7,
+                        title: "Logout",
+                        onPressed: () {
+                          _authStore.logout().then(
+                                (value) => Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const WelcomeScreen(),
+                                    ),
+                                    (route) => false),
+                              );
+                        },
+                      ),
               )
             ],
           ),

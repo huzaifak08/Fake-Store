@@ -4,13 +4,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPreferenceHelper {
   // SharedPreferenceHelper(this._sharedPreference);
 
-  Future<bool> saveAuthToken(String authToken) async {
+  Future<bool> saveAuthToken(String? authToken) async {
     SharedPreferences sharedPreference = await SharedPreferences.getInstance();
-    return sharedPreference.setString(Preferences.auth_token, authToken);
+    return sharedPreference.setString(Preferences.authToken, authToken!);
   }
 
-  Future<String?> get authToken async {
+  Future<String?> get getAuthToken async {
     SharedPreferences sharedPreference = await SharedPreferences.getInstance();
-    return sharedPreference.getString(Preferences.auth_token);
+    return sharedPreference.getString(Preferences.authToken);
+  }
+
+  Future<bool> saveIsLoggedInStatus(bool isLoggedIn) async {
+    SharedPreferences sharedPreference = await SharedPreferences.getInstance();
+    return sharedPreference.setBool(Preferences.isLoggedIn, isLoggedIn);
+  }
+
+  Future<bool?> get getLoggedInStatus async {
+    SharedPreferences sharedPreference = await SharedPreferences.getInstance();
+    return sharedPreference.getBool(Preferences.isLoggedIn);
   }
 }
