@@ -37,7 +37,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 hintText: 'Search Product',
                 onChanged: (value) {
                   _productStore.searchedProducts(value);
-                  print(_productStore.searchProductList.toString());
                 },
               ),
               SizedBox(height: getHeight(context) * 0.03),
