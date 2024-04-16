@@ -28,62 +28,69 @@ class _ProfileScreenState extends State<ProfileScreen> {
               vertical: getHeight(context) * 0.02,
               horizontal: getHeight(context) * 0.02),
           child: Observer(
-            builder: (context) => ListView(
-              children: [
-                const Header(title: "USER PROFILE"),
-                SizedBox(height: getHeight(context) * 0.03),
-                CircleAvatar(
-                  radius: getHeight(context) * 0.08,
-                  child: ClipRRect(
-                    borderRadius:
-                        BorderRadius.circular(getHeight(context) * 0.1),
-                    child: Image.asset(
-                      "assets/profile.png",
-                      fit: BoxFit.cover,
+            builder: (context) => _profileStore.isLoading
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.primaryColor,
                     ),
-                  ),
-                ),
-                SizedBox(height: getHeight(context) * 0.03),
-                ProfileTile(
-                    title: 'First Name',
-                    value: _profileStore.userModel.name.firstname),
-                ProfileTile(
-                    title: 'Last Name',
-                    value: _profileStore.userModel.name.lastname),
-                ProfileTile(
-                    title: 'Username', value: _profileStore.userModel.username),
-                ProfileTile(
-                    title: 'Email Address',
-                    value: _profileStore.userModel.email),
-                ProfileTile(
-                    title: 'Phone Number',
-                    value: _profileStore.userModel.phone),
-                SizedBox(height: getHeight(context) * 0.01),
-                Observer(
-                  builder: (context) => _authStore.isLoading
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.primaryColor,
+                  )
+                : ListView(
+                    children: [
+                      const Header(title: "USER PROFILE"),
+                      SizedBox(height: getHeight(context) * 0.03),
+                      CircleAvatar(
+                        radius: getHeight(context) * 0.08,
+                        child: ClipRRect(
+                          borderRadius:
+                              BorderRadius.circular(getHeight(context) * 0.1),
+                          child: Image.asset(
+                            "assets/profile.png",
+                            fit: BoxFit.cover,
                           ),
-                        )
-                      : CustomButton(
-                          width: getWidth(context) * 0.7,
-                          title: "Logout",
-                          onPressed: () {
-                            _authStore.logout().then(
-                                  (value) => Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const WelcomeScreen(),
-                                      ),
-                                      (route) => false),
-                                );
-                          },
                         ),
-                )
-              ],
-            ),
+                      ),
+                      SizedBox(height: getHeight(context) * 0.03),
+                      ProfileTile(
+                          title: 'First Name',
+                          value: _profileStore.userModel.name.firstname),
+                      ProfileTile(
+                          title: 'Last Name',
+                          value: _profileStore.userModel.name.lastname),
+                      ProfileTile(
+                          title: 'Username',
+                          value: _profileStore.userModel.username),
+                      ProfileTile(
+                          title: 'Email Address',
+                          value: _profileStore.userModel.email),
+                      ProfileTile(
+                          title: 'Phone Number',
+                          value: _profileStore.userModel.phone),
+                      SizedBox(height: getHeight(context) * 0.01),
+                      Observer(
+                        builder: (context) => _authStore.isLoading
+                            ? const Center(
+                                child: CircularProgressIndicator(
+                                  color: AppColors.primaryColor,
+                                ),
+                              )
+                            : CustomButton(
+                                width: getWidth(context) * 0.7,
+                                title: "Logout",
+                                onPressed: () {
+                                  _authStore.logout().then(
+                                        (value) => Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const WelcomeScreen(),
+                                            ),
+                                            (route) => false),
+                                      );
+                                },
+                              ),
+                      )
+                    ],
+                  ),
           ),
         ),
       ),

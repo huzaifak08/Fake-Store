@@ -95,6 +95,22 @@ mixin _$ProductStore on _ProductStore, Store {
     });
   }
 
+  late final _$cartListAtom =
+      Atom(name: '_ProductStore.cartList', context: context);
+
+  @override
+  ObservableList<dynamic> get cartList {
+    _$cartListAtom.reportRead();
+    return super.cartList;
+  }
+
+  @override
+  set cartList(ObservableList<dynamic> value) {
+    _$cartListAtom.reportWrite(value, super.cartList, () {
+      super.cartList = value;
+    });
+  }
+
   late final _$getAllProductsAsyncAction =
       AsyncAction('_ProductStore.getAllProducts', context: context);
 
@@ -129,9 +145,21 @@ mixin _$ProductStore on _ProductStore, Store {
   }
 
   @override
+  void toggleCart(ProductModel product) {
+    final _$actionInfo = _$_ProductStoreActionController.startAction(
+        name: '_ProductStore.toggleCart');
+    try {
+      return super.toggleCart(product);
+    } finally {
+      _$_ProductStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 favouritiesList: ${favouritiesList},
+cartList: ${cartList},
 isLoading: ${isLoading},
 productList: ${productList},
 searchProductList: ${searchProductList}

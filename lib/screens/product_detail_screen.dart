@@ -51,7 +51,10 @@ class ProductDetailScreen extends StatelessWidget {
                       fontSize: 15, color: AppColors.secondaryTextColor),
                 ),
                 SizedBox(height: getHeight(context) * 0.01),
-                const ReviewStars(rating: 3),
+                Observer(
+                  builder: (context) =>
+                      ReviewStars(rating: product.rating.rate),
+                ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(

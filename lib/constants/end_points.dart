@@ -13,7 +13,14 @@ class EndPoints {
   static const String singleProduct = "$baseUrl/products";
 
   static const String categories = "$baseUrl/products/categories";
-  static const String singleCategory = "$baseUrl/products/category/jewelery";
+
+  static const String jeweleryCategory = "$baseUrl/products/category/jewelery";
+  static const String electronicsCategory =
+      "$baseUrl/products/category/electronics";
+  static const String mensCategory =
+      "$baseUrl/products/category/men's clothing";
+  static const String womensCategory =
+      "$baseUrl/products/category/women's clothing";
 
   static const String cart = "$baseUrl/carts";
 

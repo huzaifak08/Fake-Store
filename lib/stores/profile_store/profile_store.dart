@@ -12,6 +12,11 @@ abstract class _ProfileStore with Store {
   final SharedPreferenceHelper _spHelper = SharedPreferenceHelper();
 
   @observable
+  bool _isLoading = false;
+  @computed
+  bool get isLoading => _isLoading;
+
+  @observable
   List<UserModel> _usersList = [];
   @computed
   List<UserModel> get usersList => _usersList;
@@ -23,12 +28,20 @@ abstract class _ProfileStore with Store {
 
   @action
   Future<void> getAllUsers() async {
+    _isLoading = true;
+
     _usersList = await _profileService.getAllUsersData();
+
+    _isLoading = false;
   }
 
   @action
   Future<void> getSingleUser() async {
+    _isLoading = true;
+
     String? username = await _spHelper.getUsername;
     _userModel = await _profileService.getSingleUserData(username!);
+
+    _isLoading = false;
   }
 }
