@@ -4,7 +4,7 @@ class AuthServce {
   final Dio _dio = Dio();
   final SharedPreferenceHelper _spHelper = SharedPreferenceHelper();
 
-  Future<bool> checkUserLoggedIn() async {
+  Future<bool> getUserLogStatus() async {
     try {
       bool? status = await _spHelper.getLoggedInStatus;
 
@@ -39,6 +39,22 @@ class AuthServce {
       throw Exception(err.toString());
     }
     return null;
+  }
+
+  Future<void> saveUserName(String username) async {
+    try {
+      await _spHelper.saveUsername(username);
+    } catch (err) {
+      throw Exception(err.toString());
+    }
+  }
+
+  Future<void> getUserName(String username) async {
+    try {
+      await _spHelper.getUsername;
+    } catch (err) {
+      throw Exception(err.toString());
+    }
   }
 
   Future<void> logOutUser() async {

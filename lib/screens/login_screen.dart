@@ -156,6 +156,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 const NavigationMenu(),
                                           ),
                                         );
+
+                                        _authStore.saveUserNameSP(
+                                            usernameController.text);
                                       }
                                     },
                                   );

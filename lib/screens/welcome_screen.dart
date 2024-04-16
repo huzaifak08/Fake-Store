@@ -11,6 +11,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   final AuthStore _authStore = AuthStore();
 
   @override
+  void initState() {
+    _authStore.loggedInStatus();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(

@@ -23,4 +23,14 @@ class SharedPreferenceHelper {
     SharedPreferences sharedPreference = await SharedPreferences.getInstance();
     return sharedPreference.getBool(Preferences.isLoggedIn);
   }
+
+  Future<bool> saveUsername(String? username) async {
+    SharedPreferences sharedPreference = await SharedPreferences.getInstance();
+    return sharedPreference.setString(Preferences.userName, username!);
+  }
+
+  Future<String?> get getUsername async {
+    SharedPreferences sharedPreference = await SharedPreferences.getInstance();
+    return sharedPreference.getString(Preferences.userName);
+  }
 }

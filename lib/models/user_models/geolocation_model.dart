@@ -1,34 +1,34 @@
 import 'package:fakes_store/exports/libraries.dart';
 
 class GeoLocationModel extends Equatable {
-  final String latitude;
-  final String longitude;
+  final String lat;
+  final String long;
   const GeoLocationModel({
-    required this.latitude,
-    required this.longitude,
+    required this.lat,
+    required this.long,
   });
 
   GeoLocationModel copyWith({
-    String? latitude,
-    String? longitude,
+    String? lat,
+    String? long,
   }) {
     return GeoLocationModel(
-      latitude: latitude ?? this.latitude,
-      longitude: longitude ?? this.longitude,
+      lat: lat ?? this.lat,
+      long: long ?? this.long,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'latitude': latitude,
-      'longitude': longitude,
+      'lat': lat,
+      'long': long,
     };
   }
 
   factory GeoLocationModel.fromMap(Map<String, dynamic> map) {
     return GeoLocationModel(
-      latitude: map['latitude'] ?? '',
-      longitude: map['longitude'] ?? '',
+      lat: map['lat'] ?? '',
+      long: map['long'] ?? '',
     );
   }
 
@@ -38,9 +38,8 @@ class GeoLocationModel extends Equatable {
       GeoLocationModel.fromMap(json.decode(source));
 
   @override
-  String toString() =>
-      'GeoLocationModel(latitude: $latitude, longitude: $longitude)';
+  String toString() => 'GeoLocationModel(lat: $lat, long: $long)';
 
   @override
-  List<Object> get props => [latitude, longitude];
+  List<Object> get props => [lat, long];
 }

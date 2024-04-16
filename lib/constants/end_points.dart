@@ -16,4 +16,6 @@ class EndPoints {
   static const String singleCategory = "$baseUrl/products/category/jewelery";
 
   static const String cart = "$baseUrl/carts";
+
+  static const String users = "$baseUrl/users";
 }

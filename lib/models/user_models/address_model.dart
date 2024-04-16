@@ -5,13 +5,13 @@ class AddressModel extends Equatable {
   final String street;
   final int number;
   final String zip;
-  final GeoLocationModel location;
+  final GeoLocationModel geolocation;
   const AddressModel({
     required this.city,
     required this.street,
     required this.number,
     required this.zip,
-    required this.location,
+    required this.geolocation,
   });
 
   AddressModel copyWith({
@@ -19,14 +19,14 @@ class AddressModel extends Equatable {
     String? street,
     int? number,
     String? zip,
-    GeoLocationModel? location,
+    GeoLocationModel? geolocation,
   }) {
     return AddressModel(
       city: city ?? this.city,
       street: street ?? this.street,
       number: number ?? this.number,
       zip: zip ?? this.zip,
-      location: location ?? this.location,
+      geolocation: geolocation ?? this.geolocation,
     );
   }
 
@@ -36,7 +36,7 @@ class AddressModel extends Equatable {
       'street': street,
       'number': number,
       'zip': zip,
-      'location': location.toMap(),
+      'geolocation': geolocation.toMap(),
     };
   }
 
@@ -46,7 +46,7 @@ class AddressModel extends Equatable {
       street: map['street'] ?? '',
       number: map['number']?.toInt() ?? 0,
       zip: map['zip'] ?? '',
-      location: GeoLocationModel.fromMap(map['location']),
+      geolocation: GeoLocationModel.fromMap(map['geolocation']),
     );
   }
 
@@ -57,7 +57,7 @@ class AddressModel extends Equatable {
 
   @override
   String toString() {
-    return 'AddressModel(city: $city, street: $street, number: $number, zip: $zip, location: $location)';
+    return 'AddressModel(city: $city, street: $street, number: $number, zip: $zip, geolocation: $geolocation)';
   }
 
   @override
@@ -67,7 +67,7 @@ class AddressModel extends Equatable {
       street,
       number,
       zip,
-      location,
+      geolocation,
     ];
   }
 }

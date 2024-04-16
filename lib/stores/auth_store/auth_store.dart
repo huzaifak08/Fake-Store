@@ -30,7 +30,7 @@ abstract class _AuthStore with Store {
 
   @action
   Future<void> loggedInStatus() async {
-    _isLoggedIn = await _authServce.checkUserLoggedIn();
+    _isLoggedIn = await _authServce.getUserLogStatus();
   }
 
   @action
@@ -42,6 +42,16 @@ abstract class _AuthStore with Store {
     _token = response!;
 
     _isLoading = false;
+  }
+
+  @action
+  Future<void> saveUserNameSP(String username) async {
+    _authServce.saveUserName(username);
+  }
+
+  @action
+  Future<void> getUserNameSP(String username) async {
+    _authServce.getUserName(username);
   }
 
   @action

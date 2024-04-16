@@ -113,6 +113,23 @@ mixin _$AuthStore on _AuthStore, Store {
     return _$loginAsyncAction.run(() => super.login(username, password));
   }
 
+  late final _$saveUserNameSPAsyncAction =
+      AsyncAction('_AuthStore.saveUserNameSP', context: context);
+
+  @override
+  Future<void> saveUserNameSP(String username) {
+    return _$saveUserNameSPAsyncAction
+        .run(() => super.saveUserNameSP(username));
+  }
+
+  late final _$getUserNameSPAsyncAction =
+      AsyncAction('_AuthStore.getUserNameSP', context: context);
+
+  @override
+  Future<void> getUserNameSP(String username) {
+    return _$getUserNameSPAsyncAction.run(() => super.getUserNameSP(username));
+  }
+
   late final _$logoutAsyncAction =
       AsyncAction('_AuthStore.logout', context: context);
 
