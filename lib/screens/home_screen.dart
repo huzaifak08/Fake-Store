@@ -71,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   .searchProductList[index]
                                               : _productStore
                                                   .productList[index],
+                                          productStore: _productStore,
                                         ),
                                       ));
                                 },

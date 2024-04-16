@@ -79,6 +79,22 @@ mixin _$ProductStore on _ProductStore, Store {
     });
   }
 
+  late final _$favouritiesListAtom =
+      Atom(name: '_ProductStore.favouritiesList', context: context);
+
+  @override
+  ObservableList<dynamic> get favouritiesList {
+    _$favouritiesListAtom.reportRead();
+    return super.favouritiesList;
+  }
+
+  @override
+  set favouritiesList(ObservableList<dynamic> value) {
+    _$favouritiesListAtom.reportWrite(value, super.favouritiesList, () {
+      super.favouritiesList = value;
+    });
+  }
+
   late final _$getAllProductsAsyncAction =
       AsyncAction('_ProductStore.getAllProducts', context: context);
 
@@ -91,7 +107,7 @@ mixin _$ProductStore on _ProductStore, Store {
       ActionController(name: '_ProductStore', context: context);
 
   @override
-  dynamic searchedProducts(String searchText) {
+  void searchedProducts(String searchText) {
     final _$actionInfo = _$_ProductStoreActionController.startAction(
         name: '_ProductStore.searchedProducts');
     try {
@@ -102,8 +118,20 @@ mixin _$ProductStore on _ProductStore, Store {
   }
 
   @override
+  void toggleFavourities(ProductModel product) {
+    final _$actionInfo = _$_ProductStoreActionController.startAction(
+        name: '_ProductStore.toggleFavourities');
+    try {
+      return super.toggleFavourities(product);
+    } finally {
+      _$_ProductStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
+favouritiesList: ${favouritiesList},
 isLoading: ${isLoading},
 productList: ${productList},
 searchProductList: ${searchProductList}

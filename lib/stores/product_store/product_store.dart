@@ -24,6 +24,9 @@ abstract class _ProductStore with Store {
   @computed
   List<ProductModel> get searchProductList => _searchProductList;
 
+  @observable
+  ObservableList favouritiesList = ObservableList<ProductModel>();
+
   @action
   Future<void> getAllProducts() async {
     _isLoading = true;
@@ -34,7 +37,7 @@ abstract class _ProductStore with Store {
   }
 
   @action
-  searchedProducts(String searchText) {
+  void searchedProducts(String searchText) {
     _searchProductList = _productList
         .where(
           (element) => element.title.toLowerCase().contains(
@@ -42,5 +45,14 @@ abstract class _ProductStore with Store {
               ),
         )
         .toList();
+  }
+
+  @action
+  void toggleFavourities(ProductModel product) {
+    if (favouritiesList.contains(product)) {
+      favouritiesList.remove(product);
+    } else {
+      favouritiesList.add(product);
+    }
   }
 }

@@ -1,9 +1,12 @@
 import 'package:fakes_store/exports/libraries.dart';
 import 'package:fakes_store/models/product_models/product_model.dart';
+import 'package:fakes_store/stores/product_store/product_store.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   final ProductModel product;
-  const ProductDetailScreen({super.key, required this.product});
+  final ProductStore productStore;
+  const ProductDetailScreen(
+      {super.key, required this.product, required this.productStore});
 
   @override
   Widget build(BuildContext context) {
@@ -57,19 +60,29 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: getHeight(context) * 0.01),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Iconsax.heart),
-                    ),
-                    CustomButton(
-                      width: getWidth(context) * 0.4,
-                      title: "Add to Cart",
-                      onPressed: () {},
-                    )
-                  ],
+                Observer(
+                  builder: (context) => Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          productStore.toggleFavourities(product);
+                          print(productStore.favouritiesList.toString());
+                        },
+                        icon: productStore.favouritiesList.contains(product)
+                            ? const Icon(
+                                Iconsax.heart5,
+                                color: AppColors.alertColor,
+                              )
+                            : const Icon(Iconsax.heart),
+                      ),
+                      CustomButton(
+                        width: getWidth(context) * 0.4,
+                        title: "Add to Cart",
+                        onPressed: () {},
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
