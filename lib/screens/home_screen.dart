@@ -1,7 +1,21 @@
 import 'package:fakes_store/exports/libraries.dart';
+import 'package:fakes_store/stores/product_store/product_store.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final ProductStore _productStore = ProductStore();
+
+  @override
+  void initState() {
+    _productStore.getAllProducts();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,31 +35,63 @@ class HomeScreen extends StatelessWidget {
                     MaterialStateProperty.all(Colors.grey.withOpacity(0.1)),
                 leading: const Icon(Iconsax.search_normal),
                 hintText: 'Search Product',
+                onChanged: (value) {
+                  _productStore.searchedProducts(value);
+                  print(_productStore.searchProductList.toString());
+                },
               ),
               SizedBox(height: getHeight(context) * 0.03),
-              Expanded(
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 1,
-                  ),
-                  itemCount: 4,
-                  itemBuilder: (context, index) {
-                    return ProductTile(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const ProductDetailScreen(),
-                              ));
-                        },
-                        title: "Product Title",
-                        price: 99.99,
-                        url:
-                            "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg");
-                  },
-                ),
+              Observer(
+                builder: (context) => _productStore.isLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primaryColor,
+                        ),
+                      )
+                    : Expanded(
+                        child: GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 1,
+                          ),
+                          itemCount: _productStore.searchProductList.isNotEmpty
+                              ? _productStore.searchProductList.length
+                              : _productStore.productList.length,
+                          itemBuilder: (context, index) {
+                            return ProductTile(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            ProductDetailScreen(
+                                          product: _productStore
+                                                  .searchProductList.isNotEmpty
+                                              ? _productStore
+                                                  .searchProductList[index]
+                                              : _productStore
+                                                  .productList[index],
+                                        ),
+                                      ));
+                                },
+                                title: _productStore
+                                        .searchProductList.isNotEmpty
+                                    ? _productStore
+                                        .searchProductList[index].title
+                                    : _productStore.productList[index].title,
+                                price: _productStore
+                                        .searchProductList.isNotEmpty
+                                    ? _productStore
+                                        .searchProductList[index].price
+                                    : _productStore.productList[index].price,
+                                url: _productStore.searchProductList.isNotEmpty
+                                    ? _productStore
+                                        .searchProductList[index].image
+                                    : _productStore.productList[index].image);
+                          },
+                        ),
+                      ),
               )
             ],
           ),

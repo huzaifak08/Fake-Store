@@ -34,12 +34,12 @@ class CategoryProductScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return ProductTile(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const ProductDetailScreen(),
-                              ));
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) =>
+                          //           const ProductDetailScreen(),
+                          //     ));
                         },
                         title: "Product Title",
                         price: 99.99,
