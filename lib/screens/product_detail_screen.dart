@@ -76,9 +76,19 @@ class ProductDetailScreen extends StatelessWidget {
                             : const Icon(Iconsax.heart),
                       ),
                       CustomButton(
+                        color: productStore.cartList.contains(product)
+                            ? AppColors.primaryColor.withOpacity(0.3)
+                            : AppColors.primaryColor,
+                        textColor: productStore.cartList.contains(product)
+                            ? AppColors.primaryColor
+                            : AppColors.whiteColor,
                         width: getWidth(context) * 0.4,
-                        title: "Add to Cart",
-                        onPressed: () {},
+                        title: productStore.cartList.contains(product)
+                            ? "Added to Cart"
+                            : "Add to Cart",
+                        onPressed: () {
+                          productStore.toggleCart(product);
+                        },
                       )
                     ],
                   ),

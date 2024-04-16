@@ -27,6 +27,9 @@ abstract class _ProductStore with Store {
   @observable
   ObservableList favouritiesList = ObservableList<ProductModel>();
 
+  @observable
+  ObservableList cartList = ObservableList<ProductModel>();
+
   @action
   Future<void> getAllProducts() async {
     _isLoading = true;
@@ -53,6 +56,15 @@ abstract class _ProductStore with Store {
       favouritiesList.remove(product);
     } else {
       favouritiesList.add(product);
+    }
+  }
+
+  @action
+  void toggleCart(ProductModel product) {
+    if (cartList.contains(product)) {
+      cartList.remove(product);
+    } else {
+      cartList.add(product);
     }
   }
 }
