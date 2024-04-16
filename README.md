@@ -47,7 +47,7 @@ https://fakestoreapi.com/docs
 ### PACKAGES:
 
 --> iconsax  
---> connectivity_plus (Progress)  
+--> connectivity_plus  
 -->dio  
 -->flutter_mobx  
 -->get_it  
@@ -61,4 +61,5 @@ https://fakestoreapi.com/docs
 --> Focus Nodes.  
 --> iconsax pacakge.  
 --> Custom Bottom Navigation Bar.  
---> Profile Screen.
+--> Profile Screen.  
+--> Auth Functionality.

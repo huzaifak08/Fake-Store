@@ -1,7 +1,12 @@
 import 'package:fakes_store/exports/libraries.dart';
+import 'package:fakes_store/models/product_models/product_model.dart';
+import 'package:fakes_store/stores/product_store/product_store.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  const ProductDetailScreen({super.key});
+  final ProductModel product;
+  final ProductStore productStore;
+  const ProductDetailScreen(
+      {super.key, required this.product, required this.productStore});
 
   @override
   Widget build(BuildContext context) {
@@ -29,45 +34,67 @@ class ProductDetailScreen extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           horizontal: getWidth(context) * 0.1),
                       child: Image.network(
-                        "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+                        product.image,
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                 ),
                 Text(
-                  "Mens Casual Premium Slim Fit T-Shirts",
+                  product.title,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 SizedBox(height: getHeight(context) * 0.01),
-                const Text(
-                  "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-                  style: TextStyle(
+                Text(
+                  product.description,
+                  style: const TextStyle(
                       fontSize: 15, color: AppColors.secondaryTextColor),
                 ),
                 SizedBox(height: getHeight(context) * 0.01),
-                const ReviewStars(rating: 3),
+                Observer(
+                  builder: (context) =>
+                      ReviewStars(rating: product.rating.rate),
+                ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "\$300",
+                    "\$${product.price}",
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
                 SizedBox(height: getHeight(context) * 0.01),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Iconsax.heart),
-                    ),
-                    CustomButton(
-                      width: getWidth(context) * 0.4,
-                      title: "Add to Cart",
-                      onPressed: () {},
-                    )
-                  ],
+                Observer(
+                  builder: (context) => Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          productStore.toggleFavourities(product);
+                        },
+                        icon: productStore.favouritiesList.contains(product)
+                            ? const Icon(
+                                Iconsax.heart5,
+                                color: AppColors.alertColor,
+                              )
+                            : const Icon(Iconsax.heart),
+                      ),
+                      CustomButton(
+                        color: productStore.cartList.contains(product)
+                            ? AppColors.primaryColor.withOpacity(0.3)
+                            : AppColors.primaryColor,
+                        textColor: productStore.cartList.contains(product)
+                            ? AppColors.primaryColor
+                            : AppColors.whiteColor,
+                        width: getWidth(context) * 0.4,
+                        title: productStore.cartList.contains(product)
+                            ? "Added to Cart"
+                            : "Add to Cart",
+                        onPressed: () {
+                          productStore.toggleCart(product);
+                        },
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

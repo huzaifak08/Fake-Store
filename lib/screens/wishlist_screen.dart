@@ -1,7 +1,15 @@
 import 'package:fakes_store/exports/libraries.dart';
+import 'package:fakes_store/stores/product_store/product_store.dart';
 
-class WishlistScreen extends StatelessWidget {
+class WishlistScreen extends StatefulWidget {
   const WishlistScreen({super.key});
+
+  @override
+  State<WishlistScreen> createState() => _WishlistScreenState();
+}
+
+class _WishlistScreenState extends State<WishlistScreen> {
+  final ProductStore _productStore = ProductStore();
 
   @override
   Widget build(BuildContext context) {
@@ -23,21 +31,23 @@ class WishlistScreen extends StatelessWidget {
                 hintText: 'Search Product',
               ),
               SizedBox(height: getHeight(context) * 0.03),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 2,
-                  itemBuilder: (context, index) {
-                    return const WishlistTile(
-                      title:
-                          "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-                      description:
-                          "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-                      imageUrl:
-                          "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-                    );
-                  },
+              Observer(
+                builder: (context) => Expanded(
+                  child: ListView.builder(
+                    itemCount: _productStore.favouritiesList.length,
+                    itemBuilder: (context, index) {
+                      return const WishlistTile(
+                        title:
+                            "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+                        description:
+                            "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+                        imageUrl:
+                            "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+                      );
+                    },
+                  ),
                 ),
-              )
+              ),
             ],
           ),
         ),
