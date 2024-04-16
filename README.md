@@ -47,7 +47,7 @@ https://fakestoreapi.com/docs
 ### PACKAGES:
 
 --> iconsax  
---> connectivity_plus  
+--> connectivity_plus (Progress)  
 -->dio  
 -->flutter_mobx  
 -->get_it  
