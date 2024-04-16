@@ -67,7 +67,6 @@ class ProductDetailScreen extends StatelessWidget {
                       IconButton(
                         onPressed: () {
                           productStore.toggleFavourities(product);
-                          print(productStore.favouritiesList.toString());
                         },
                         icon: productStore.favouritiesList.contains(product)
                             ? const Icon(
