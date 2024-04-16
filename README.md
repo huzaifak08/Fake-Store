@@ -48,11 +48,12 @@ https://fakestoreapi.com/docs
 
 --> iconsax  
 --> connectivity_plus  
--->dio  
--->flutter_mobx  
--->mobx  
--->mobx_codegen  
--->build_runner
+--> dio  
+--> flutter_mobx  
+--> mobx  
+--> mobx_codegen  
+--> build_runner  
+--> shared_preferences
 
 ### More:
 
