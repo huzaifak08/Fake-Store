@@ -14,6 +14,14 @@ class ProductTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String displayTitle = title;
+    List<String> titleWords = title.split(' ');
+
+    // Check if title has more than 2 words
+    if (titleWords.length > 2) {
+      // Only take the first two words
+      displayTitle = titleWords.sublist(0, 2).join(' ');
+    }
     return InkWell(
       onTap: onTap,
       child: GridTile(
@@ -30,11 +38,21 @@ class ProductTile extends StatelessWidget {
                     child: Image.network(
                       url,
                       fit: BoxFit.cover,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) {
+                          return child;
+                        }
+                        return const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.primaryColor,
+                          ),
+                        );
+                      },
                     ),
                   ),
                   SizedBox(height: getHeight(context) * 0.01),
                   Text(
-                    title,
+                    displayTitle,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),

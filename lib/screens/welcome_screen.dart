@@ -1,7 +1,20 @@
 import 'package:fakes_store/exports/libraries.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  final AuthStore _authStore = AuthStore();
+
+  @override
+  void initState() {
+    _authStore.loggedInStatus();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,12 +100,22 @@ class WelcomeScreen extends StatelessWidget {
                     SizedBox(height: getHeight(context) * 0.04),
                     CustomButton(
                       title: "Get Started",
-                      onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                      ),
+                      onPressed: () async {
+                        if (_authStore.isLoggedIn) {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const NavigationMenu(),
+                              ));
+                        } else {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginScreen(),
+                            ),
+                          );
+                        }
+                      },
                       height: getHeight(context) * 0.07,
                       width: getWidth(context) * 0.8,
                     ),

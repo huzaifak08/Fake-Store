@@ -1,33 +1,33 @@
 import 'package:fakes_store/exports/libraries.dart';
 
 class RatingModel extends Equatable {
-  final int rating;
+  final int rate;
   final int count;
   const RatingModel({
-    required this.rating,
+    required this.rate,
     required this.count,
   });
 
   RatingModel copyWith({
-    int? rating,
+    int? rate,
     int? count,
   }) {
     return RatingModel(
-      rating: rating ?? this.rating,
+      rate: rate ?? this.rate,
       count: count ?? this.count,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'rating': rating,
+      'rate': rate,
       'count': count,
     };
   }
 
   factory RatingModel.fromMap(Map<String, dynamic> map) {
     return RatingModel(
-      rating: map['rating']?.toInt() ?? 0,
+      rate: map['rate']?.toInt() ?? 0,
       count: map['count']?.toInt() ?? 0,
     );
   }
@@ -38,8 +38,8 @@ class RatingModel extends Equatable {
       RatingModel.fromMap(json.decode(source));
 
   @override
-  String toString() => 'RatingModel(rating: $rating, count: $count)';
+  String toString() => 'RatingModel(rate: $rate, count: $count)';
 
   @override
-  List<Object> get props => [rating, count];
+  List<Object> get props => [rate, count];
 }

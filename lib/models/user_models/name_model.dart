@@ -1,34 +1,34 @@
 import 'package:fakes_store/exports/libraries.dart';
 
 class NameModel extends Equatable {
-  final String firstName;
-  final String lastName;
+  final String firstname;
+  final String lastname;
   const NameModel({
-    required this.firstName,
-    required this.lastName,
+    required this.firstname,
+    required this.lastname,
   });
 
   NameModel copyWith({
-    String? firstName,
-    String? lastName,
+    String? firstname,
+    String? lastname,
   }) {
     return NameModel(
-      firstName: firstName ?? this.firstName,
-      lastName: lastName ?? this.lastName,
+      firstname: firstname ?? this.firstname,
+      lastname: lastname ?? this.lastname,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'firstName': firstName,
-      'lastName': lastName,
+      'firstname': firstname,
+      'lastname': lastname,
     };
   }
 
   factory NameModel.fromMap(Map<String, dynamic> map) {
     return NameModel(
-      firstName: map['firstName'] ?? '',
-      lastName: map['lastName'] ?? '',
+      firstname: map['firstname'] ?? '',
+      lastname: map['lastname'] ?? '',
     );
   }
 
@@ -38,8 +38,8 @@ class NameModel extends Equatable {
       NameModel.fromMap(json.decode(source));
 
   @override
-  String toString() => 'NameModel(firstName: $firstName, lastName: $lastName)';
+  String toString() => 'NameModel(firstname: $firstname, lastname: $lastname)';
 
   @override
-  List<Object> get props => [firstName, lastName];
+  List<Object> get props => [firstname, lastname];
 }
