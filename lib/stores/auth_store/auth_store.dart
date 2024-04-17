@@ -28,6 +28,16 @@ abstract class _AuthStore with Store {
   @computed
   bool get isVisible => _isVisible;
 
+  @observable
+  String _successMessage = "";
+  @computed
+  String get successMessage => _successMessage;
+
+  @observable
+  String? _failureMessage;
+  @computed
+  String get failureMessage => _failureMessage!;
+
   @action
   Future<void> loggedInStatus() async {
     _isLoggedIn = await _authServce.getUserLogStatus();
@@ -37,9 +47,13 @@ abstract class _AuthStore with Store {
   Future<void> login(String username, String password) async {
     _isLoading = true;
 
-    String? response = await _authServce.signInUser(username, password);
+    String response = await _authServce.signInUser(username, password);
 
-    _token = response!;
+    if (response == "Response Error") {
+      _failureMessage = response;
+    } else {
+      _token = response;
+    }
 
     _isLoading = false;
   }

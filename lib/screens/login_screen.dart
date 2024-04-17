@@ -157,8 +157,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                           ),
                                         );
 
-                                        _authStore.saveUserNameSP(
-                                            usernameController.text);
+                                        // _authStore.saveUserNameSP(
+                                        //     usernameController.text);
+
+                                        _authStore.saveUserNameSP("mor_2314");
                                       }
                                     },
                                   );

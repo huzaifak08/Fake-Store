@@ -14,31 +14,29 @@ class AuthServce {
     }
   }
 
-  Future<String?> signInUser(String username, String password) async {
+  Future<String> signInUser(String username, String password) async {
     try {
       final response = await _dio.post(
         EndPoints.login,
-        data: {"username": username, "password": password},
+        data: {"username": "mor_2314", "password": "83r5^_"},
       );
 
       if (response.statusCode == 200) {
         debugPrint(response.data['token']);
 
-        String? token = response.data['token'];
+        String token = response.data['token'];
 
-        if (token != null) {
-          _spHelper.saveAuthToken(token);
-          _spHelper.saveIsLoggedInStatus(true);
-        }
+        _spHelper.saveAuthToken(token);
+        _spHelper.saveIsLoggedInStatus(true);
 
         return token;
       } else {
-        debugPrint("response Error");
+        debugPrint("Response Error");
+        return "Response Error";
       }
     } catch (err) {
       throw Exception(err.toString());
     }
-    return null;
   }
 
   Future<void> saveUserName(String username) async {

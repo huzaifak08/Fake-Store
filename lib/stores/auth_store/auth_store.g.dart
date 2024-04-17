@@ -33,6 +33,20 @@ mixin _$AuthStore on _AuthStore, Store {
   bool get isVisible => (_$isVisibleComputed ??=
           Computed<bool>(() => super.isVisible, name: '_AuthStore.isVisible'))
       .value;
+  Computed<String>? _$successMessageComputed;
+
+  @override
+  String get successMessage =>
+      (_$successMessageComputed ??= Computed<String>(() => super.successMessage,
+              name: '_AuthStore.successMessage'))
+          .value;
+  Computed<String>? _$failureMessageComputed;
+
+  @override
+  String get failureMessage =>
+      (_$failureMessageComputed ??= Computed<String>(() => super.failureMessage,
+              name: '_AuthStore.failureMessage'))
+          .value;
 
   late final _$_isLoadingAtom =
       Atom(name: '_AuthStore._isLoading', context: context);
@@ -97,6 +111,38 @@ mixin _$AuthStore on _AuthStore, Store {
     });
   }
 
+  late final _$_successMessageAtom =
+      Atom(name: '_AuthStore._successMessage', context: context);
+
+  @override
+  String get _successMessage {
+    _$_successMessageAtom.reportRead();
+    return super._successMessage;
+  }
+
+  @override
+  set _successMessage(String value) {
+    _$_successMessageAtom.reportWrite(value, super._successMessage, () {
+      super._successMessage = value;
+    });
+  }
+
+  late final _$_failureMessageAtom =
+      Atom(name: '_AuthStore._failureMessage', context: context);
+
+  @override
+  String? get _failureMessage {
+    _$_failureMessageAtom.reportRead();
+    return super._failureMessage;
+  }
+
+  @override
+  set _failureMessage(String? value) {
+    _$_failureMessageAtom.reportWrite(value, super._failureMessage, () {
+      super._failureMessage = value;
+    });
+  }
+
   late final _$loggedInStatusAsyncAction =
       AsyncAction('_AuthStore.loggedInStatus', context: context);
 
@@ -158,7 +204,9 @@ mixin _$AuthStore on _AuthStore, Store {
 isLoading: ${isLoading},
 token: ${token},
 isLoggedIn: ${isLoggedIn},
-isVisible: ${isVisible}
+isVisible: ${isVisible},
+successMessage: ${successMessage},
+failureMessage: ${failureMessage}
     ''';
   }
 }
