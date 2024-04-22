@@ -50,7 +50,7 @@ jobs:
           fi
 
       - name: Build apk
-        run: flutter build apk
+        run: flutter build apk --release
 
       - name: Upload APK
         uses: ncipollo/release-action@v1
