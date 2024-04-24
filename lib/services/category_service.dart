@@ -10,6 +10,55 @@ class CategoryService {
   List<ProductModel> mensList = [];
   List<ProductModel> womensList = [];
 
+  Future<Map<String, List<ProductModel>>> parallelApiCall() async {
+    try {
+      final response = await Future.wait([
+        _dio.get(EndPoints.jeweleryCategory),
+        _dio.get(EndPoints.electronicsCategory),
+        _dio.get(EndPoints.mensCategory),
+        _dio.get(EndPoints.womensCategory)
+      ]);
+
+      if (response[0].statusCode == 200 &&
+          response[1].statusCode == 200 &&
+          response[2].statusCode == 200 &&
+          response[3].statusCode == 200) {
+        List<dynamic> jeweleryData = response[0].data;
+        List<dynamic> electronicsData = response[1].data;
+        List<dynamic> mensData = response[2].data;
+        List<dynamic> womensData = response[3].data;
+
+        List<ProductModel> jeweleryTempList =
+            jeweleryData.map((e) => ProductModel.fromMap(e)).toList();
+
+        List<ProductModel> electronicsTempList =
+            electronicsData.map((e) => ProductModel.fromMap(e)).toList();
+
+        List<ProductModel> mensTempList =
+            mensData.map((e) => ProductModel.fromMap(e)).toList();
+
+        List<ProductModel> womensTempList =
+            womensData.map((e) => ProductModel.fromMap(e)).toList();
+
+        jeweleryList = List.from(jeweleryTempList);
+        electronicsList = List.from(electronicsTempList);
+        mensList = List.from(mensTempList);
+        womensList = List.from(womensTempList);
+
+        return {
+          "jewelery": jeweleryList,
+          "electronics": electronicsList,
+          "mens": mensList,
+          "womens": womensList,
+        };
+      } else {
+        throw Exception('Response Error on Products');
+      }
+    } catch (err) {
+      throw Exception(err.toString());
+    }
+  }
+
   Future<List<ProductModel>> getAllJeweleryProductsData() async {
     try {
       final response = await _dio.get(EndPoints.jeweleryCategory);

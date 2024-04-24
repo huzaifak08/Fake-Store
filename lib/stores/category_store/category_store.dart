@@ -35,6 +35,20 @@ abstract class _CategoryStore with Store {
   @computed
   List<ProductModel> get womensList => _womensList;
 
+  Future<void> getAllCategory() async {
+    _isLoading = true;
+
+    Map<String, List<ProductModel>> categoryMap =
+        await _categoryService.parallelApiCall();
+
+    _jeweleryList = categoryMap['jewelery']!;
+    _electronicsList = categoryMap['electronics']!;
+    _mensList = categoryMap['mens']!;
+    _womensList = categoryMap['womens']!;
+
+    _isLoading = false;
+  }
+
   Future<void> getAllJewelery() async {
     _isLoading = true;
 

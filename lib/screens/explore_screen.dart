@@ -14,10 +14,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   @override
   void initState() {
-    _categoryStore.getAllJewelery();
-    _categoryStore.getAllElectronics();
-    _categoryStore.getAllMens();
-    _categoryStore.getAllWomens();
+    _categoryStore.getAllCategory();
 
     super.initState();
   }
