@@ -1,3 +1,4 @@
+import 'package:fakes_store/components/service_locator.dart';
 import 'package:fakes_store/exports/libraries.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -33,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  final AuthStore _authStore = AuthStore();
+  final AuthStore _authStore = getIt<AuthStore>();
 
   @override
   Widget build(BuildContext context) {

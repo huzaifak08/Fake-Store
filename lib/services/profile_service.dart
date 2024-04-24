@@ -3,7 +3,8 @@ import 'package:fakes_store/models/user_models/user_model.dart';
 // import 'package:tuple/tuple.dart';
 
 class ProfileService {
-  final Dio _dio = Dio();
+  final Dio _dio;
+  ProfileService(this._dio);
 
   List<UserModel> usersList = [];
 

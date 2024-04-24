@@ -1,3 +1,4 @@
+import 'package:fakes_store/components/service_locator.dart';
 import 'package:fakes_store/exports/libraries.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -8,7 +9,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  final AuthStore _authStore = AuthStore();
+  final AuthStore _authStore = getIt<AuthStore>();
 
   @override
   void initState() {

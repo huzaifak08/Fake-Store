@@ -2,7 +2,8 @@ import 'package:fakes_store/exports/libraries.dart';
 import 'package:fakes_store/models/product_models/product_model.dart';
 
 class CategoryService {
-  final Dio _dio = Dio();
+  final Dio _dio;
+  CategoryService(this._dio);
 
   List<ProductModel> jeweleryList = [];
   List<ProductModel> electronicsList = [];

@@ -1,3 +1,4 @@
+import 'package:fakes_store/components/service_locator.dart';
 import 'package:fakes_store/exports/libraries.dart';
 import 'package:fakes_store/stores/category_store/category_store.dart';
 
@@ -9,7 +10,7 @@ class ExploreScreen extends StatefulWidget {
 }
 
 class _ExploreScreenState extends State<ExploreScreen> {
-  final CategoryStore _categoryStore = CategoryStore();
+  final CategoryStore _categoryStore = getIt<CategoryStore>();
 
   @override
   void initState() {

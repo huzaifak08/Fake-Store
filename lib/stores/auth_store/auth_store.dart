@@ -6,7 +6,9 @@ part 'auth_store.g.dart';
 class AuthStore = _AuthStore with _$AuthStore;
 
 abstract class _AuthStore with Store {
-  final AuthServce _authServce = AuthServce();
+  _AuthStore(this._authServce);
+
+  final AuthServce _authServce;
 
   @observable
   bool _isLoading = false;

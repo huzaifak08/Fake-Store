@@ -2,9 +2,9 @@ name: Check
 
 on:
   push:
-    branches: ["func"]
+    branches: ["version"]
   pull_request:
-    branches: ["func"]
+    branches: ["version"]
 
 jobs:
   build:

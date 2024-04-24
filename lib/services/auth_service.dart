@@ -1,8 +1,11 @@
 import 'package:fakes_store/exports/libraries.dart';
 
 class AuthServce {
-  final Dio _dio = Dio();
-  final SharedPreferenceHelper _spHelper = SharedPreferenceHelper();
+  AuthServce(this._spHelper, this._dio);
+
+  final SharedPreferenceHelper _spHelper;
+  final Dio _dio;
+  // final SharedPreferenceHelper _spHelper = SharedPreferenceHelper();
 
   Future<bool> getUserLogStatus() async {
     try {

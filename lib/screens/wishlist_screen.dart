@@ -1,3 +1,4 @@
+import 'package:fakes_store/components/service_locator.dart';
 import 'package:fakes_store/exports/libraries.dart';
 import 'package:fakes_store/stores/product_store/product_store.dart';
 
@@ -9,7 +10,7 @@ class WishlistScreen extends StatefulWidget {
 }
 
 class _WishlistScreenState extends State<WishlistScreen> {
-  final ProductStore _productStore = ProductStore();
+  final ProductStore _productStore = getIt<ProductStore>();
 
   @override
   Widget build(BuildContext context) {

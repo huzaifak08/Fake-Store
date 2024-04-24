@@ -7,7 +7,8 @@ part 'product_store.g.dart';
 class ProductStore = _ProductStore with _$ProductStore;
 
 abstract class _ProductStore with Store {
-  final ProductService _productService = ProductService();
+  _ProductStore(this._productService);
+  final ProductService _productService;
 
   @observable
   bool _isLoading = false;

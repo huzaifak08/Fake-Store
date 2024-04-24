@@ -8,8 +8,9 @@ part 'profile_store.g.dart';
 class ProfileStore = _ProfileStore with _$ProfileStore;
 
 abstract class _ProfileStore with Store {
-  final ProfileService _profileService = ProfileService();
-  final SharedPreferenceHelper _spHelper = SharedPreferenceHelper();
+  _ProfileStore(this._profileService, this._spHelper);
+  final ProfileService _profileService;
+  final SharedPreferenceHelper _spHelper;
 
   @observable
   bool _isLoading = false;

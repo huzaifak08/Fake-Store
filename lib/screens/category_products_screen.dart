@@ -1,3 +1,4 @@
+import 'package:fakes_store/components/service_locator.dart';
 import 'package:fakes_store/exports/libraries.dart';
 import 'package:fakes_store/models/product_models/product_model.dart';
 import 'package:fakes_store/stores/product_store/product_store.dart';
@@ -43,7 +44,7 @@ class CategoryProductScreen extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => ProductDetailScreen(
                                   product: products[index],
-                                  productStore: ProductStore(),
+                                  productStore: getIt<ProductStore>(),
                                 ),
                               ));
                         },

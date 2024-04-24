@@ -1,3 +1,4 @@
+import 'package:fakes_store/components/service_locator.dart';
 import 'package:fakes_store/exports/libraries.dart';
 import 'package:fakes_store/screens/welcome_screen.dart';
 import 'package:fakes_store/stores/profile_store/profile_store.dart';
@@ -10,8 +11,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final AuthStore _authStore = AuthStore();
-  final ProfileStore _profileStore = ProfileStore();
+  final AuthStore _authStore = getIt<AuthStore>();
+  final ProfileStore _profileStore = getIt<ProfileStore>();
 
   @override
   void initState() {

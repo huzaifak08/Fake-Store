@@ -34,6 +34,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_mobx: ^2.2.1+1
+  get_it: ^7.7.0
   iconsax: ^0.0.8
   mobx: ^2.3.3+1
   shared_preferences: ^2.2.2

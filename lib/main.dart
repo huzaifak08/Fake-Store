@@ -1,8 +1,11 @@
+import 'package:fakes_store/components/service_locator.dart';
 import 'package:fakes_store/screens/welcome_screen.dart';
 import 'exports/libraries.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await setupLocator();
   runApp(const MyApp());
 }
 
@@ -36,7 +39,6 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      //
       home: const WelcomeScreen(),
     );
   }

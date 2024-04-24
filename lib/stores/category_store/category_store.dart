@@ -7,7 +7,8 @@ part 'category_store.g.dart';
 class CategoryStore = _CategoryStore with _$CategoryStore;
 
 abstract class _CategoryStore with Store {
-  final CategoryService _categoryService = CategoryService();
+  _CategoryStore(this._categoryService);
+  final CategoryService _categoryService;
 
   @observable
   bool _isLoading = false;
