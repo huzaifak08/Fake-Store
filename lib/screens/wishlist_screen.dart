@@ -37,13 +37,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   child: ListView.builder(
                     itemCount: _productStore.favouritiesList.length,
                     itemBuilder: (context, index) {
-                      return const WishlistTile(
-                        title:
-                            "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-                        description:
-                            "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-                        imageUrl:
-                            "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+                      return WishlistTile(
+                        product: _productStore.favouritiesList[index],
+                        productStore: _productStore,
                       );
                     },
                   ),

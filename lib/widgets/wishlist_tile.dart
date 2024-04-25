@@ -1,14 +1,15 @@
 import 'package:fakes_store/exports/libraries.dart';
+import 'package:fakes_store/models/product_models/product_model.dart';
+import 'package:fakes_store/stores/product_store/product_store.dart';
 
 class WishlistTile extends StatelessWidget {
-  final String title;
-  final String description;
-  final String imageUrl;
-  const WishlistTile(
-      {super.key,
-      required this.title,
-      required this.description,
-      required this.imageUrl});
+  final ProductModel product;
+  final ProductStore productStore;
+  const WishlistTile({
+    super.key,
+    required this.product,
+    required this.productStore,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class WishlistTile extends StatelessWidget {
                 borderRadius: BorderRadius.circular(23),
               ),
               child: Image.network(
-                imageUrl,
+                product.image,
               ),
             ),
             SizedBox(width: getWidth(context) * 0.02),
@@ -46,13 +47,13 @@ class WishlistTile extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    title,
+                    product.title,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                   SizedBox(width: getHeight(context) * 0.03),
                   Text(
-                    description,
+                    product.description,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
                     softWrap: true,
@@ -68,13 +69,19 @@ class WishlistTile extends StatelessWidget {
                           color: AppColors.pendingColor,
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Iconsax.heart_remove1,
-                          color: AppColors.alertColor,
+                      Observer(
+                        builder: (context) => IconButton(
+                          onPressed: () {
+                            productStore.toggleFavourities(product);
+                          },
+                          icon: Icon(
+                            productStore.favouritiesList.contains(product)
+                                ? Iconsax.heart_remove1
+                                : Iconsax.heart,
+                            color: AppColors.alertColor,
+                          ),
                         ),
-                      ),
+                      )
                     ],
                   )
                 ],

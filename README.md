@@ -62,4 +62,5 @@ https://fakestoreapi.com/docs
 --> iconsax pacakge.  
 --> Custom Bottom Navigation Bar.  
 --> Profile Screen.  
---> Auth Functionality.
+--> Auth Functionality.  
+--> Parallel API Call.
