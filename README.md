@@ -63,4 +63,4 @@ https://fakestoreapi.com/docs
 --> Custom Bottom Navigation Bar.  
 --> Profile Screen.  
 --> Auth Functionality.  
---> Parallel API Call.
+--> Parallel API Call
